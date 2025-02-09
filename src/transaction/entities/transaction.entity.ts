@@ -5,14 +5,13 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn
-} from "typeorm";
-import { User } from "../../user/entities/user.entity";
-import { Category } from "../../category/entities/category.entity";
+  UpdateDateColumn,
+} from 'typeorm';
+import { User } from '../../user/entities/user.entity';
+import { Category } from '../../category/entities/category.entity';
 
 @Entity()
 export class Transaction {
-
   @PrimaryGeneratedColumn({ name: 'transaction_id' })
   id: number;
 
@@ -25,11 +24,11 @@ export class Transaction {
   @Column()
   amount: number;
 
-  @ManyToOne(() => User, user => user.transactions)
+  @ManyToOne(() => User, (user) => user.transactions)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @ManyToOne(() => Category, category => category.transactions)
+  @ManyToOne(() => Category, (category) => category.transactions)
   category: Category;
 
   @CreateDateColumn()
